@@ -12,6 +12,7 @@ import android.widget.TextView;
 public class SignInActivity extends AppCompatActivity {
     private TextView textView6;
     private ImageView BackArrowIV;
+    private ConstraintLayout startBtn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,6 +32,14 @@ public class SignInActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(SignInActivity.this,IntroActivity.class));
+            }
+        });
+
+        startBtn=findViewById(R.id.startBtn);
+        startBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(SignInActivity.this,AccountActivity.class));
             }
         });
 
