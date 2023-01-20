@@ -74,7 +74,7 @@
             app:layout_constraintTop_toBottomOf="@+id/nameTV" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/startBtn"
+            android:id="@+id/editBtn"
             android:layout_width="189dp"
             android:layout_height="37dp"
             android:layout_marginTop="24dp"
