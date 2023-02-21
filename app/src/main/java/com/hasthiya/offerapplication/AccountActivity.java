@@ -9,7 +9,7 @@ import android.view.View;
 
 public class AccountActivity extends AppCompatActivity {
 
-    private ConstraintLayout logoutBtn,editBtn;
+    private ConstraintLayout logoutBtn,editBtn,cn_2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,6 +28,14 @@ public class AccountActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(AccountActivity.this,EditAccountActivity.class));
+            }
+        });
+
+        cn_2=findViewById(R.id.cn_2);
+        cn_2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(AccountActivity.this,HomeActivity.class));
             }
         });
     }
