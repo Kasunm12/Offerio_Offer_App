@@ -1,8 +1,5 @@
 package com.hasthiya.offerapplication.dto.User;
 
-import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
-
 public class RegisterRequestDTO {
 
   private String name;
