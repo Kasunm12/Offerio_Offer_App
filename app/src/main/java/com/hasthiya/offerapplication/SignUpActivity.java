@@ -55,10 +55,10 @@ public class SignUpActivity extends AppCompatActivity {
 
     private void saveUser(){
         //get the edit text input text
-        String userName = name.getText().toString();
-        String Email =  email.getText().toString();
-        String Phone =  phoneNumber.getText().toString();
-        String Password = password.getText().toString();
+        String userName = name.getText().toString().trim();
+        String Email =  email.getText().toString().trim();
+        String Phone =  phoneNumber.getText().toString().trim();
+        String Password = password.getText().toString().trim();
 
         //check the validation
         //username validation
@@ -101,10 +101,10 @@ public class SignUpActivity extends AppCompatActivity {
                         String name = response.body().getToken().getSub().getName();
                         System.out.println("==================="+name);
                         System.out.println("=================== response is successful ================"+response);
-                        Toast.makeText(SignUpActivity.this, "Register Success", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "Register Success", Toast.LENGTH_SHORT).show();
                     }
                     else {
-                        Toast.makeText(SignUpActivity.this, "Register Not Success", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "Register Not Success", Toast.LENGTH_SHORT).show();
                         System.out.println("=================== response is unsuccessful ================"+response);
                     }
                 }
