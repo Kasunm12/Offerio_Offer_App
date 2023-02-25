@@ -1,11 +1,12 @@
-package com.hasthiya.offerapplication.dto;
+package com.hasthiya.offerapplication.dto.User;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class RegisterDTO {
+public class RegisterResponseDTO {
 
     @SerializedName("code")
     @Expose
@@ -17,13 +18,13 @@ public class RegisterDTO {
 
     @SerializedName("token")
     @Expose
-    ArrayList<Token> token;
+    private Token token;
 
     @SerializedName("message")
     @Expose
     private String message;
 
-    public RegisterDTO(int code, boolean success, ArrayList<Token> token, String message) {
+    public RegisterResponseDTO(int code, boolean success, Token token, String message) {
         this.code = code;
         this.success = success;
         this.token = token;
@@ -46,11 +47,11 @@ public class RegisterDTO {
         this.success = success;
     }
 
-    public ArrayList<Token> getToken() {
+    public Token getToken() {
         return token;
     }
 
-    public void setToken(ArrayList<Token> token) {
+    public void setToken(Token token) {
         this.token = token;
     }
 
@@ -74,9 +75,9 @@ public class RegisterDTO {
 
         @SerializedName("sub")
         @Expose
-        ArrayList<Sub> sub;
+        private Sub sub;
 
-        public Token(String token, String expires, ArrayList<Sub> sub) {
+        public Token(String token, String expires, Sub sub) {
             this.token = token;
             this.expires = expires;
             this.sub = sub;
@@ -98,11 +99,11 @@ public class RegisterDTO {
             this.expires = expires;
         }
 
-        public ArrayList<Sub> getSub() {
+        public Sub getSub() {
             return sub;
         }
 
-        public void setSub(ArrayList<Sub> sub) {
+        public void setSub(Sub sub) {
             this.sub = sub;
         }
     }

@@ -8,15 +8,25 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class ApiClient {
 
     private static Retrofit retrofit = null;
+    private static ApiClient apiClient;
 
 
-    public static ApiServices getAPIClient() {
-        if (retrofit == null) {
-            retrofit = new Retrofit.Builder()
-                    .baseUrl(AppConstants.BASE_URL)
-                    .addConverterFactory(GsonConverterFactory.create())
-                    .build();
+    private ApiClient() {
+        retrofit = new Retrofit.Builder()
+                .baseUrl(AppConstants.BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+    }
+
+    public static synchronized ApiClient getInstance(){
+        if (apiClient == null){
+            apiClient =  new ApiClient();
         }
+
+        return apiClient;
+    }
+
+    public ApiServices getApiService(){
         return retrofit.create(ApiServices.class);
     }
 }
