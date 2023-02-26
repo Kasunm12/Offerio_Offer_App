@@ -99,7 +99,6 @@ public class SignUpActivity extends AppCompatActivity {
                 public void onResponse(Call<RegisterResponseDTO> call, Response<RegisterResponseDTO> response) {
                     if (response.isSuccessful()){
                         String name = response.body().getToken().getSub().getName();
-                        System.out.println("==================="+name);
                         System.out.println("=================== response is successful ================"+response);
                         Toast.makeText(getApplicationContext(), "Register Success", Toast.LENGTH_SHORT).show();
                     }
@@ -110,7 +109,7 @@ public class SignUpActivity extends AppCompatActivity {
                 }
                 @Override
                 public void onFailure(Call<RegisterResponseDTO> call, Throwable t) {
-                    System.out.println("response failed =============================================="+ t);
+                    System.out.println("===================response failed ====================="+ t);
                 }
             });
         }
