@@ -101,6 +101,7 @@ public class CreateShop {
         @Expose
         private String phone;
 
+
         @SerializedName("image")
         @Expose
         private String image;
