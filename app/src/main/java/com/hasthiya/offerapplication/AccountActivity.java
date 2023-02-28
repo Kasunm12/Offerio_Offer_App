@@ -5,6 +5,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 
 public class AccountActivity extends AppCompatActivity {
@@ -39,4 +40,25 @@ public class AccountActivity extends AppCompatActivity {
             }
         });
     }
+
+    public void gotoHome(MenuItem item) {
+        Intent intent = new Intent(AccountActivity.this, HomeActivity.class);
+        startActivity(intent);
+    }
+
+    public void gotoCategory(MenuItem item) {
+        Intent intent = new Intent(AccountActivity.this, CategoryActivity.class);
+        startActivity(intent);
+    }
+
+    public void gotoLocation(MenuItem item) {
+        Intent intent = new Intent(AccountActivity.this, MapActivity.class);
+        startActivity(intent);
+    }
+
+    public void gotoAccount(MenuItem item) {
+        Intent intent = new Intent(AccountActivity.this, AccountActivity.class);
+        startActivity(intent);
+    }
+
 }
