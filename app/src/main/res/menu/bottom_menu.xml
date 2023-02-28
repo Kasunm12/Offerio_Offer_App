@@ -6,15 +6,4 @@
     <item android:title="" android:icon="@drawable/categories" android:id="@+id/bet" android:enabled="true" android:onClick="gotoRating" />
     <item android:title="" android:icon="@drawable/location" android:id="@+id/profile" android:enabled="true" android:onClick="gotoContest"/>
     <item android:title="" android:icon="@drawable/account" android:id="@+id/side_bet" android:enabled="false" android:onClick="AccountActivity"/>
-<!--    <item android:title="" android:id="@+id/imageSection" android:enabled="true" android:onClick="gotoProfile"/>-->
-    <!--    <item-->
-    <!--        android:title="Image Section"-->
-    <!--        android:id="@+id/imageSection"-->
-    <!--        app:showAsAction="always"-->
-    <!--        android:actionLayout="@layout/rotate_profile__image"-->
-    <!--        android:enabled="false"/>-->
-
-
-
-
 </menu>
