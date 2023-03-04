@@ -1,11 +1,13 @@
 package com.hasthiya.offerapplication.api;
 
+import com.hasthiya.offerapplication.dto.Promotions.GetAllPromotions;
 import com.hasthiya.offerapplication.dto.User.LoginRequestDTO;
 import com.hasthiya.offerapplication.dto.User.LoginResponseDTO;
 import com.hasthiya.offerapplication.dto.User.RegisterRequestDTO;
 import com.hasthiya.offerapplication.dto.User.RegisterResponseDTO;
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.GET;
 import retrofit2.http.POST;
 
 public interface ApiServices {
@@ -15,4 +17,7 @@ public interface ApiServices {
 
     @POST("user/login")
     Call<LoginResponseDTO> LoginUser(@Body LoginRequestDTO loginRequestDTO);
+
+    @GET("promotions/getAll")
+    Call<GetAllPromotions> getAllPromotions();
 }
