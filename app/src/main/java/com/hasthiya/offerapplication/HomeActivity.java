@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.TextView;
 
 import com.hasthiya.offerapplication.adaptors.OfferAdaptor;
@@ -58,7 +59,7 @@ public class HomeActivity extends AppCompatActivity {
                         getAllPromotionsList = response.body().getData();
                         LinearLayoutManager layoutManager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL,false);
                         rv_contest_by_category.setLayoutManager(layoutManager);
-                        offerAdaptor = new OfferAdaptor(getApplicationContext(),getAllPromotionsList);
+                        offerAdaptor = new OfferAdaptor(getApplicationContext(),getAllPromotionsList, HomeActivity.this::onItemClickOffer);
                         rv_contest_by_category.setAdapter(offerAdaptor);
                         System.out.println("=================success=================="+response);
                     }else {
@@ -75,6 +76,12 @@ public class HomeActivity extends AppCompatActivity {
         }catch (Exception e){
 
         }
+    }
+
+    private void onItemClickOffer(int position) {
+
+        Intent intent = new Intent(HomeActivity.this, PizzaActivity.class);
+        startActivity(intent);
     }
 
     public void gotoHome(MenuItem item) {

@@ -1,6 +1,7 @@
 package com.hasthiya.offerapplication.adaptors;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.hasthiya.offerapplication.PizzaActivity;
 import com.hasthiya.offerapplication.R;
 import com.hasthiya.offerapplication.dto.Promotions.GetAllPromotions;
 
@@ -21,11 +23,13 @@ public class OfferAdaptor extends RecyclerView.Adapter<OfferAdaptor.OfferViewHol
 
     Context mContext;
     ArrayList<GetAllPromotions.Data> mData;
+    OfferAdaptor.onItemClickListener onItemClickListener;
     int size;
-    public OfferAdaptor(Context mContext, ArrayList<GetAllPromotions.Data> mData) {
+    public OfferAdaptor(Context mContext, ArrayList<GetAllPromotions.Data> mData, onItemClickListener onItemClickListener) {
 
         this.mContext = mContext;
         this.mData =  mData;
+        this.onItemClickListener = onItemClickListener;
     }
 
     @NonNull
@@ -33,7 +37,7 @@ public class OfferAdaptor extends RecyclerView.Adapter<OfferAdaptor.OfferViewHol
     public OfferAdaptor.OfferViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View layout;
         layout = LayoutInflater.from(mContext).inflate(R.layout.home_list_item,parent,false);
-        return new OfferAdaptor.OfferViewHolder(layout);
+        return new OfferAdaptor.OfferViewHolder(layout,onItemClickListener);
     }
 
     @Override
@@ -46,6 +50,16 @@ public class OfferAdaptor extends RecyclerView.Adapter<OfferAdaptor.OfferViewHol
                     .into(holder.img_profile);
         }
 
+        holder.img_profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(mContext, PizzaActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                String offerId = mData.get(position).getId();
+                intent.putExtra("offerId", offerId);
+                mContext.startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -63,17 +77,22 @@ public class OfferAdaptor extends RecyclerView.Adapter<OfferAdaptor.OfferViewHol
 
         ImageView img_profile;
         TextView tv_promotion;
-        public OfferViewHolder(@NonNull View itemView) {
+        onItemClickListener onItemClickListener;
+        public OfferViewHolder(@NonNull View itemView, OfferAdaptor.onItemClickListener onItemClickListener) {
             super(itemView);
-
+            this.onItemClickListener = onItemClickListener;
             img_profile = itemView.findViewById(R.id.img_profile);
             tv_promotion = itemView.findViewById(R.id.tv_promotion);
-
+            itemView.setOnClickListener(this);
         }
 
         @Override
-        public void onClick(View v) {
+        public void onClick(View view) {
+            onItemClickListener.onItemClickOffer(getAdapterPosition());
+            }
+    }
 
-        }
+    public interface onItemClickListener {
+        void onItemClickOffer(int position);
     }
 }
