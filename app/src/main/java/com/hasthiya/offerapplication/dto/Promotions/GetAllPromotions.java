@@ -51,7 +51,7 @@ public class GetAllPromotions {
 
     public class Data{
 
-        @SerializedName("id")
+        @SerializedName("_id")
         @Expose
         private String id;
 
