@@ -49,7 +49,7 @@ public class GetAllPromotions {
         this.data = data;
     }
 
-    class Data{
+    public class Data{
 
         @SerializedName("id")
         @Expose
