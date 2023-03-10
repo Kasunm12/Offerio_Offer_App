@@ -66,6 +66,7 @@ public class PizzaActivity extends AppCompatActivity {
                     String offer_price = response.body().getData().get(0).getPrice();
                     String offer_description = response.body().getData().get(0).getDescription();
                     String foods = response.body().getData().get(0).getType();
+
                     if (offer_image != null) {
                         Glide.with(getApplicationContext())
                                 .load(offer_image)
