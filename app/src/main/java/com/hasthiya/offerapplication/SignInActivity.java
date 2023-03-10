@@ -4,9 +4,11 @@ import androidx.activity.OnBackPressedCallback;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
@@ -30,6 +32,8 @@ public class SignInActivity extends AppCompatActivity {
     private ConstraintLayout startBtn;
     EditText editTextTextPersonName;
     EditText passwordEd;
+    SharedPreferences pref;
+    SharedPreferences.Editor edt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +43,10 @@ public class SignInActivity extends AppCompatActivity {
         editTextTextPersonName = findViewById(R.id.editTextTextPersonName);
         passwordEd = findViewById(R.id.passwordEd);
         textView6=findViewById(R.id.textView6);
+
+        pref = getApplicationContext().getSharedPreferences("USER_DETAILS", Activity.MODE_PRIVATE);
+        edt = pref.edit();
+
         textView6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -88,6 +96,8 @@ public class SignInActivity extends AppCompatActivity {
                     String name = response.body().getMessage();
                     System.out.println("=========name========" + name);
                     System.out.println("=================== response is successful ================"+response);
+                    edt.putString("user_id", response.body().getToken().getSub().getId());
+                    edt.commit();
                     Toast.makeText(getApplicationContext(), "Login is Success", Toast.LENGTH_SHORT).show();
                     Intent intent=new Intent(SignInActivity.this,AccountActivity.class);
                     startActivity(intent);
