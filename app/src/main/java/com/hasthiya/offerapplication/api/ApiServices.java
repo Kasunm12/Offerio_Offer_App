@@ -2,8 +2,8 @@ package com.hasthiya.offerapplication.api;
 
 import com.hasthiya.offerapplication.dto.Promotions.GetAllPromotions;
 import com.hasthiya.offerapplication.dto.Promotions.GetOnePromotion;
+import com.hasthiya.offerapplication.dto.Shop.GetAllCategory;
 import com.hasthiya.offerapplication.dto.User.GetUserDTO;
-import com.hasthiya.offerapplication.dto.User.GetUsersDTO;
 import com.hasthiya.offerapplication.dto.User.LoginRequestDTO;
 import com.hasthiya.offerapplication.dto.User.LoginResponseDTO;
 import com.hasthiya.offerapplication.dto.User.RegisterRequestDTO;
@@ -30,4 +30,7 @@ public interface ApiServices {
 
     @GET("user/getUser/{user_id}")
     Call<GetUserDTO> getUserDetails(@Path("user_id") String user_id);
+
+    @GET("category/all")
+    Call<GetAllCategory> getAllCategory();
 }
