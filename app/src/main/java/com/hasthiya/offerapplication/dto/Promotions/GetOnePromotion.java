@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
 
-public class GetAllPromotions {
+public class GetOnePromotion {
 
     @SerializedName("code")
     @Expose
@@ -19,10 +19,15 @@ public class GetAllPromotions {
     @Expose
     private ArrayList<Data> data;
 
-    public GetAllPromotions(int code, boolean success, ArrayList<Data> data) {
+    @SerializedName("message")
+    @Expose
+    private String message;
+
+    public GetOnePromotion(int code, boolean success, ArrayList<Data> data, String message) {
         this.code = code;
         this.success = success;
         this.data = data;
+        this.message = message;
     }
 
     public int getCode() {
@@ -49,6 +54,14 @@ public class GetAllPromotions {
         this.data = data;
     }
 
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
     public class Data{
 
         @SerializedName("_id")
@@ -71,21 +84,21 @@ public class GetAllPromotions {
         @Expose
         private String description;
 
-        @SerializedName("type")
+        @SerializedName("types")
         @Expose
-        private String type;
+        private String types;
 
         @SerializedName("image")
         @Expose
         private String image;
 
-        public Data(String id, String offer, String availability, String price, String description, String type, String image) {
+        public Data(String id, String offer, String availability, String price, String description, String types, String image) {
             this.id = id;
             this.offer = offer;
             this.availability = availability;
             this.price = price;
             this.description = description;
-            this.type = type;
+            this.types = types;
             this.image = image;
         }
 
@@ -130,11 +143,11 @@ public class GetAllPromotions {
         }
 
         public String getType() {
-            return type;
+            return types;
         }
 
         public void setType(String type) {
-            this.type = type;
+            this.types = types;
         }
 
         public String getImage() {
