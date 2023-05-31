@@ -2,10 +2,13 @@ package com.hasthiya.offerapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -26,9 +29,10 @@ import retrofit2.Response;
 public class PizzaActivity extends AppCompatActivity {
 
     String offerId;
-    ImageView offerImage;
+    ImageView offerImage, backArrow;
     TextView offerType, AvailableTV, price, description, availabletypestopicTV;
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,7 +47,15 @@ public class PizzaActivity extends AppCompatActivity {
         price = findViewById(R.id.priceTV);
         description = findViewById(R.id.textView);
         availabletypestopicTV = findViewById(R.id.availabletypestopicTV);
+        backArrow = findViewById(R.id.back_arrow);
 
+        backArrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(PizzaActivity.this, HomeActivity.class);
+                startActivity(intent);
+            }
+        });
 
 
         offerId = getIntent().getStringExtra("offerId");

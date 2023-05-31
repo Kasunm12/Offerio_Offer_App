@@ -6,9 +6,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.GridLayout;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.hasthiya.offerapplication.adaptors.ShopAdaptor;
@@ -29,6 +32,8 @@ public class SubCategoryActivity extends AppCompatActivity {
     RecyclerView rv_shops;
     ShopAdaptor shopAdaptor;
 
+    ImageView backArrow;
+
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +41,14 @@ public class SubCategoryActivity extends AppCompatActivity {
         setContentView(R.layout.activity_included_offers);
 
         rv_shops =  findViewById(R.id.rv_shop_details);
+        backArrow = findViewById(R.id.back_arrow);
+        backArrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(SubCategoryActivity.this, HomeActivity.class);
+                startActivity(intent);
+            }
+        });
 
         categoryName = getIntent().getStringExtra("category_name");
         System.out.println("*********************************************"+categoryName);
