@@ -8,6 +8,8 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
 
 import com.hasthiya.offerapplication.adaptors.CategoryAdaptor;
 import com.hasthiya.offerapplication.adaptors.OfferAdaptor;
@@ -25,12 +27,23 @@ public class CategoryActivity extends AppCompatActivity {
     private ArrayList<GetAllCategory.Data> AllCategory;
     RecyclerView rv_contest_by_category;
     CategoryAdaptor categoryAdaptor;
+
+    ImageView backArrow;
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_category);
         rv_contest_by_category = findViewById(R.id.rv_contest_by_category);
+        backArrow = findViewById(R.id.back_arrow);
+
+        backArrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(CategoryActivity.this, HomeActivity.class);
+                startActivity(intent);
+            }
+        });
 
         getAllCategory();
     }
