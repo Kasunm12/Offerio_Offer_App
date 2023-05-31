@@ -22,17 +22,19 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     private GoogleMap mMap;
     private MapFragment mapFragment;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map);
 
-        //google map fragment
-//        SupportMapFragement mapFragement = (SupportMapFragement) getSupportFragmentManager()
-//                .findFragmentById(R.id.map);
-        mapFragment = (MapFragment) getFragmentManager().findFragmentById(R.id.signup_map);
-//        mapFragement.getMapAsync(OnMapReadyCallback this);
-        //google map Fragment
+//        //google map fragment
+////        SupportMapFragement mapFragement = (SupportMapFragement) getSupportFragmentManager()
+////                .findFragmentById(R.id.map);
+        mapFragment = (MapFragment) getFragmentManager().findFragmentById(R.id.map);
+////        mapFragement.getMapAsync(OnMapReadyCallback this);
+//        //google map Fragment
 
 
     }
