@@ -6,86 +6,42 @@
     android:layout_height="match_parent"
     android:background="#ffffff">
 
-    <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/img_property_search"
-        android:layout_width="187dp"
-        android:layout_height="325dp"
-        android:clipToOutline="true"
-        android:padding="10dp"
-        android:scaleType="centerCrop"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:shapeAppearanceOverlay="@style/roundCorner"
-        app:srcCompat="@drawable/image" />
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout5"
-        android:layout_width="186dp"
-        android:layout_height="339dp"
-        android:layout_marginStart="9dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="9dp"
-        android:layout_marginBottom="9dp"
-        android:padding="5dp"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_address_search"
-        app:layout_constraintEnd_toEndOf="@+id/img_property_search"
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
+        >
 
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/img_property_search_1"
+            android:layout_width="187dp"
+            android:layout_height="220dp"
+            android:layout_marginTop="16dp"
+            android:clipToOutline="true"
+            android:padding="10dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintStart_toStartOf="parent"
+            app:shapeAppearanceOverlay="@style/roundCorner"
+            app:srcCompat="@drawable/homebackgraound" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/tv_address_search_01"
+            android:layout_width="96dp"
+            android:layout_height="19dp"
+            android:layout_gravity="center"
+            android:text="Cricket Shoes"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="@+id/img_property_search_1"
+            app:layout_constraintHorizontal_bias="0.51"
+            app:layout_constraintStart_toStartOf="@+id/img_property_search_1"
+            app:layout_constraintTop_toBottomOf="@+id/img_property_search_1" />
+    </LinearLayout>
 
-    <TextView
-        android:id="@+id/tv_address_search"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:text="Buger King"
-        android:textColor="#000000"
-        android:textSize="15sp"
-        app:layout_constraintEnd_toEndOf="@+id/img_property_search"
-        app:layout_constraintStart_toStartOf="@+id/img_property_search"
-        app:layout_constraintTop_toBottomOf="@+id/img_property_search" />
-
-
-    <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/img_property_search_1"
-        android:layout_width="187dp"
-        android:layout_height="325dp"
-        android:layout_marginTop="16dp"
-        android:clipToOutline="true"
-        android:padding="10dp"
-        android:scaleType="centerCrop"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout5"
-        app:shapeAppearanceOverlay="@style/roundCorner"
-        app:srcCompat="@drawable/homebackgraound" />
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout5_01"
-        android:layout_width="183dp"
-        android:layout_height="350dp"
-        android:layout_marginStart="9dp"
-        android:layout_marginEnd="9dp"
-        android:layout_marginBottom="9dp"
-        android:padding="5dp"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_address_search_01"
-        app:layout_constraintEnd_toEndOf="@+id/img_property_search_1"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/img_property_search_1">
-
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <TextView
-        android:id="@+id/tv_address_search_01"
-        android:layout_width="96dp"
-        android:layout_height="19dp"
-        android:text="Cricket Shoes"
-        android:textColor="#000000"
-        android:textSize="15sp"
-        app:layout_constraintEnd_toEndOf="@+id/img_property_search_1"
-        app:layout_constraintHorizontal_bias="0.51"
-        app:layout_constraintStart_toStartOf="@+id/img_property_search_1"
-        app:layout_constraintTop_toBottomOf="@+id/img_property_search_1" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

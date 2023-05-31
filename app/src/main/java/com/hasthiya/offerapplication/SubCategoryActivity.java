@@ -1,14 +1,21 @@
 package com.hasthiya.offerapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.GridLayout;
 import android.widget.Toast;
 
+import com.hasthiya.offerapplication.adaptors.ShopAdaptor;
 import com.hasthiya.offerapplication.api.ApiClient;
 import com.hasthiya.offerapplication.dto.Shop.GetAllShopsByCategoryNameDTO;
+
+import java.util.ArrayList;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -18,11 +25,17 @@ public class SubCategoryActivity extends AppCompatActivity {
 
     String categoryName;
     String capitalizeCategoryName;
+    ArrayList<GetAllShopsByCategoryNameDTO.Data> shopsList;
+    RecyclerView rv_shops;
+    ShopAdaptor shopAdaptor;
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_included_offers);
+
+        rv_shops =  findViewById(R.id.rv_shop_details);
 
         categoryName = getIntent().getStringExtra("category_name");
         System.out.println("*********************************************"+categoryName);
@@ -42,8 +55,13 @@ public class SubCategoryActivity extends AppCompatActivity {
                 public void onResponse(Call<GetAllShopsByCategoryNameDTO> call, Response<GetAllShopsByCategoryNameDTO> response) {
                     if (response.isSuccessful()){
                         System.out.println("=================getAllShopsByCategoryName success=================="+response);
+                        shopsList = response.body().getData();
                         if (!response.body().getData().isEmpty()){
-                            System.out.println(response.body().getData().get(0).getCategory());
+                            GridLayoutManager layoutManager = new GridLayoutManager(getApplicationContext(),2);
+                            rv_shops.setLayoutManager(layoutManager);
+                            shopAdaptor = new ShopAdaptor(getApplicationContext(), shopsList, SubCategoryActivity.this::onItemClickShop);
+                            rv_shops.setAdapter(shopAdaptor);
+
                         }else{
                             Toast.makeText(getApplicationContext(), "No Data", Toast.LENGTH_SHORT).show();
                         }
@@ -62,6 +80,12 @@ public class SubCategoryActivity extends AppCompatActivity {
         }catch (Exception e){
             System.out.println(e);
         }
+    }
+
+    private void onItemClickShop(int position) {
+
+        Intent intent = new Intent(SubCategoryActivity.this, IncludedOffersActivity.class);
+        startActivity(intent);
     }
 
 

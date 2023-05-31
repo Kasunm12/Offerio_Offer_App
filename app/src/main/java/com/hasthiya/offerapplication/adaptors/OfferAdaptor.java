@@ -73,7 +73,7 @@ public class OfferAdaptor extends RecyclerView.Adapter<OfferAdaptor.OfferViewHol
     }
 
 
-    public class OfferViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    public static class OfferViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
         ImageView img_profile;
         TextView tv_promotion;
